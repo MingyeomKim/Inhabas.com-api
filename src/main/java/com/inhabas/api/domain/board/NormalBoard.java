@@ -33,6 +33,12 @@ public class NormalBoard extends BaseBoard {
         this.contents = new Contents(contents);
     }
 
+    public NormalBoard(String title, String contents, Category category) {
+        this.title = new Title(title);
+        this.contents = new Contents(contents);
+        this.category = category;
+    }
+
     @Override
     public NormalBoard writtenBy(Member writer) {
         return (NormalBoard) super.writtenBy(writer);

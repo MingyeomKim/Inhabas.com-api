@@ -34,9 +34,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public NormalBoard write(SaveBoardDto saveBoardDto) {
+    public Integer write(SaveBoardDto saveBoardDto) {
         Category category = em.getReference(Category.class, saveBoardDto.getCategoryId());
-        return boardRepository.save(saveBoardDto.toEntity());
+        return boardRepository.save(saveBoardDto.toEntity(category)).getId();
     }
 
     @Override

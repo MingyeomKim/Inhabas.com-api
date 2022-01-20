@@ -3,7 +3,7 @@ package com.inhabas.api.dto.board;
 import java.time.LocalDateTime;
 
 public class BoardDto {
-    private Integer id; // BoardDetailView에서 null..?
+    private Integer id;
     private String title;
     private String contents; // BoardListView에서 null
     private String name;

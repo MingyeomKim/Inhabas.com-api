@@ -29,14 +29,15 @@ public class BoardController {
     @Operation(description = "게시글 조회")
     @GetMapping
     public NormalBoard board(@RequestParam Integer categoryId, @RequestParam Integer boardId) {
-        return boardService.getBoard(categoryId, boardId).orElseThrow(EntityNotFoundException::new);
+        return boardService.getBoard(categoryId, boardId)
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Operation(description = "모든 게시글 조회")
     @GetMapping("/all")
     public Page<NormalBoard> allBoards(
             @ModelAttribute Pageable pageable,
-            @RequestParam(required = false) Integer categoryId
+            @RequestParam Integer categoryId
     ) {
         Page<NormalBoard> boardList = boardService.getBoardList(pageable, categoryId);
 		return boardList;
@@ -44,7 +45,7 @@ public class BoardController {
 
     @Operation(description = "게시글 추가")
     @PostMapping
-    public NormalBoard addBoard(@RequestBody SaveBoardDto saveBoardDto) {
+    public Integer addBoard(@RequestBody SaveBoardDto saveBoardDto) {
         return boardService.write(saveBoardDto);
     }
 

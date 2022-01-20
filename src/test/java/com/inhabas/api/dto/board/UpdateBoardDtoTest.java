@@ -53,13 +53,9 @@ public class UpdateBoardDtoTest {
         // then
         assertTrue(violations.isEmpty());
         assertEquals(0, violations.size());
-
-        for(ConstraintViolation<UpdateBoardDto> violation : violations){
-            logger.debug("violation error message : {}", violation.getMessage());
-        }
     }
 
-    @DisplayName("본문에 공백이 입력되었을 경우 예외 처리 + CategoryId가 등록되지 않았을 경우 예외 처리")
+    @DisplayName("본문에 공백이 입력되었을 경우 + CategoryId가 등록되지 않았을 경우 통과하지 못함")
     @Test
     public void Contents_is_empty() {
         //given
@@ -81,9 +77,5 @@ public class UpdateBoardDtoTest {
         // then
         assertFalse(violations.isEmpty());
         assertEquals(2, violations.size());
-
-        for(ConstraintViolation<UpdateBoardDto> violation : violations){
-            logger.debug("violation error message : {}", violation.getMessage());
-        }
     }
 }

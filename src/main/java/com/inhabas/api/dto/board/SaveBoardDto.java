@@ -1,5 +1,6 @@
 package com.inhabas.api.dto.board;
 
+import com.inhabas.api.domain.board.Category;
 import com.inhabas.api.domain.board.NormalBoard;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,8 @@ public class SaveBoardDto {
     @NotNull(message = "카테고리를 선택하세요.")
     private Integer categoryId;
 
-    public NormalBoard toEntity() {
-        return null;
+    public NormalBoard toEntity(Category category) {
+        return new NormalBoard(title, contents, category);
     }
 
 }
