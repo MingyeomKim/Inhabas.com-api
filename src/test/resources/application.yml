@@ -19,6 +19,10 @@ spring:
       ddl-auto: create
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+<<<<<<< HEAD
+=======
+#      dialect: org.hibernate.dialect.MariaDBDialect
+>>>>>>> 9828c9501ee727834c3c722b9dc785cbbef45e3a
     properties:
       format_sql: true
   sql:
