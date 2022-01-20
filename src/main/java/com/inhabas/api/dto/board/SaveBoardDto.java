@@ -1,6 +1,7 @@
 package com.inhabas.api.dto.board;
 
 import com.inhabas.api.domain.board.Category;
+<<<<<<< HEAD
 import com.inhabas.api.domain.board.NormalBoard;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,21 @@ public class SaveBoardDto {
         return new NormalBoard(title, contents, category);
     }
 
+=======
+import com.inhabas.api.domain.member.Member;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
+public class SaveBoardDto {
+    private String title;
+    private String contents;
+    private Category category;
+
+    public SaveBoardDto(String title, String contents, Category category) {
+        this.title = title;
+        this.contents = contents;
+        this.category = category;
+    }
+>>>>>>> 95bba374aca8108b079368a039f13ab0d611ac42
 }
