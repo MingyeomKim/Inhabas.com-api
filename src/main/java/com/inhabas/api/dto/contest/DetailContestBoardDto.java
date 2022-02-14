@@ -1,6 +1,7 @@
 package com.inhabas.api.dto.contest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.inhabas.api.dto.board.ParentBoardDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @AllArgsConstructor
-public class DetailContestBoardDto {
+public class DetailContestBoardDto extends ParentBoardDto {
 
     private Integer id;
     private String writerName;

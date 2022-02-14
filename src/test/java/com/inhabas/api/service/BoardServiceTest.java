@@ -9,7 +9,7 @@ import com.inhabas.api.domain.menu.MenuRepository;
 import com.inhabas.api.dto.board.BoardDto;
 import com.inhabas.api.dto.board.SaveBoardDto;
 import com.inhabas.api.dto.board.UpdateBoardDto;
-import com.inhabas.api.service.board.BoardServiceImpl;
+import com.inhabas.api.service.board.NormalBoardServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ import static org.mockito.BDDMockito.*;
 public class BoardServiceTest {
 
     @InjectMocks
-    BoardServiceImpl boardService;
+    NormalBoardServiceImpl boardService;
 
     @Mock
     NormalBoardRepository boardRepository;

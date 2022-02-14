@@ -37,7 +37,7 @@ public class SaveContestBoardDtoTest {
     @Test
     public void FieldsAreNullError() {
         //given
-        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto(null, null, null, null, null, null, null);
+        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto(null, null, null, null, null, null, null, null);
 
         // when
         Set<ConstraintViolation<SaveContestBoardDto>> violations = validator.validate(saveContestBoardDto);
@@ -59,7 +59,7 @@ public class SaveContestBoardDtoTest {
     @Test
     public void FieldsAreBlankedError() {
         // given
-        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto(" ", " ", " ", " ", null, null, null);
+        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto(" " ," ", null, null, " ", null, null, null);
 
         //when
         Set<ConstraintViolation<SaveContestBoardDto>> violations = validator.validate(saveContestBoardDto);
@@ -84,11 +84,12 @@ public class SaveContestBoardDtoTest {
         SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto(
                 "title".repeat(20) + ".",
                 "contents! Cucumber paste has to have a sun-dried, chilled sauerkraut component.",
+                9,
+                12201863,
                 "Assoc".repeat(20) + ".",
                 "topic".repeat(100)+ ".",
                 LocalDate.of(2022, 01, 01),
-                LocalDate.of(2022, 03, 03),
-                12201863 );
+                LocalDate.of(2022, 03, 03));
 
         // when
         Set<ConstraintViolation<SaveContestBoardDto>> violations = validator.validate(saveContestBoardDto);
@@ -107,8 +108,8 @@ public class SaveContestBoardDtoTest {
     @Test
     public void DeadlineIsOutdatedError() {
         //given
-        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto("title", "contents", "association", "topic",
-                LocalDate.of(2022, 01, 01), LocalDate.of(2022, 02, 01), 12201863);
+        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto("title", "contents", 9, 12201863, "association", "topic",
+                LocalDate.of(2022, 01, 01), LocalDate.of(2022, 02, 01));
 
         // when
         Set<ConstraintViolation<SaveContestBoardDto>> violations = validator.validate(saveContestBoardDto);

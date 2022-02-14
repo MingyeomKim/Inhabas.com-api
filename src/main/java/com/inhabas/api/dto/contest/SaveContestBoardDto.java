@@ -1,5 +1,6 @@
 package com.inhabas.api.dto.contest;
 
+import com.inhabas.api.dto.board.SaveBoardDto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,14 +15,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class SaveContestBoardDto {
-
-    @NotBlank(message = "제목을 입력하세요.")
-    @Length(max = 100, message = "제목은 최대 100자입니다.")
-    private String title;
-
-    @NotBlank(message = "본문을 입력하세요.")
-    private String contents;
+public class SaveContestBoardDto extends SaveBoardDto {
 
     @Length(max = 100, message = "100자 이내로 작성해주세요.")
     @NotBlank(message = "협회기관을 입력하세요.")
@@ -38,6 +32,11 @@ public class SaveContestBoardDto {
     @Future (message = "이미 모집기간이 종료된 공모전은 등록할 수 없습니다.")
     private LocalDate deadline;
 
-    @NotNull(message = "로그인 후 이용해주세요.")
-    private Integer loginedUser;
+    public SaveContestBoardDto(String title, String contents, Integer menuId, Integer loginedUser, String association, String topic, LocalDate start, LocalDate deadline){
+        super(title, contents, menuId, loginedUser);
+        this.association = association;
+        this.topic = topic;
+        this.start = start;
+        this.deadline = deadline;
+    }
 }

@@ -15,6 +15,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
@@ -49,7 +52,7 @@ public class MenuRepositoryTest {
         Menu saveFreeMenu = menuRepository.save(freeBoardMenu);
 
         //then
-        Assertions.assertThat(saveActivityMenu)
+        assertThat(saveActivityMenu)
                 .usingRecursiveComparison()
                 .ignoringFields("id")
                 .isEqualTo(activityBoardMenu);
@@ -68,7 +71,7 @@ public class MenuRepositoryTest {
                 new Menu(noticeMenu.getId(), noticeMenu.getMenuGroup(), noticeMenu.getPriority(), noticeMenu.getType(), newName, noticeMenu.getDescription()));
 
         //then
-        Assertions.assertThat(updated.getName()).isEqualTo(newName);
+        assertThat(updated.getName()).isEqualTo(newName);
     }
 
     @DisplayName("한 메뉴그룹에, priority 가 중복될 시 오류")
@@ -93,6 +96,26 @@ public class MenuRepositoryTest {
                 () -> menuRepository.save(new Menu(menuGroup2, 2, MenuType.LIST, "질문게시판", "궁금한 점을 질문하는 게시판입니다.")));
     }
 
+
+    @DisplayName("입력된 menuId로 MenuType 객체를 찾아 반환한다.")
+    @Test
+    public void findMenuTypeByMenuId() {
+        //given
+        Menu activityBoardMenu = new Menu(menuGroup1, 1, MenuType.LIST, "동아리 활동", "동아리원의 활동을 기록하는 게시판입니다.");
+        Menu noticeBoardMenu = new Menu(menuGroup2, 1, MenuType.LIST, "공지사항", "동아리 공지를 게시하는 게시판입니다.");
+        menuRepository.save(activityBoardMenu);
+        menuRepository.save(noticeBoardMenu);
+        Integer menuId1 = activityBoardMenu.getId();
+        Integer menuId2 = noticeBoardMenu.getId();
+
+        // when
+        MenuType menuType1 = menuRepository.findMenuTypeByMenuId(menuId1).get();
+        MenuType menuType2 = menuRepository.findMenuTypeByMenuId(menuId2).get();
+
+        // then
+        assertThat(menuType1).isEqualTo(activityBoardMenu.getType());
+        assertThat(menuType2).isEqualTo(activityBoardMenu.getType());
+    }
 
 
 }

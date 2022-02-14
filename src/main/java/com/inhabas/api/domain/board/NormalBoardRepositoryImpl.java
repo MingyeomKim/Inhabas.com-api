@@ -1,5 +1,6 @@
 package com.inhabas.api.domain.board;
 
+import com.inhabas.api.domain.menu.MenuGroup;
 import com.inhabas.api.dto.board.BoardDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -62,4 +63,5 @@ public class NormalBoardRepositoryImpl implements NormalBoardRepositoryCustom {
 
         return Optional.ofNullable(target);
     }
+
 }

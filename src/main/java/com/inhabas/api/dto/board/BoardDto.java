@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class BoardDto {
+public class BoardDto extends ParentBoardDto {
     private Integer id;
     private String title;
     private String contents;

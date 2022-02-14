@@ -10,9 +10,12 @@ import javax.validation.constraints.Size;
 
 @Getter @Setter
 @NoArgsConstructor
-public class UpdateBoardDto {
-    @NotNull
+public class UpdateBoardDto extends ParentBoardDto {
+    @NotNull(message = "수정할 게시글을 선택해주세요.")
     private Integer id;
+
+    @NotNull(message = "수정할 게시글의 메뉴를 선택해주세요.")
+    private Integer menuId;
 
     @NotBlank(message = "제목을 입력하세요.")
     @Size(max = 100, message = "제목은 최대 100자입니다.")

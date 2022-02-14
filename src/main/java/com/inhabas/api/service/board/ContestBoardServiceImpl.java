@@ -1,4 +1,4 @@
-package com.inhabas.api.service.contest;
+package com.inhabas.api.service.board;
 
 import com.inhabas.api.domain.contest.ContestBoard;
 import com.inhabas.api.domain.contest.ContestBoardRepository;
@@ -19,8 +19,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ContestBoardServiceImpl implements ContestBoardService{
-
+public class ContestBoardServiceImpl implements BoardService<SaveContestBoardDto, UpdateContestBoardDto, DetailContestBoardDto, ListContestBoardDto> {
     private final ContestBoardRepository contestBoardRepository;
     private final MemberRepository memberRepository;
 
@@ -35,7 +34,7 @@ public class ContestBoardServiceImpl implements ContestBoardService{
                 .start(dto.getStart())
                 .deadline(dto.getDeadline())
                 .build()
-                        .writtenBy(writer);
+                .writtenBy(writer);
         return contestBoardRepository.save(contestBoard).getId();
     }
 
@@ -53,7 +52,6 @@ public class ContestBoardServiceImpl implements ContestBoardService{
         // em.merge() 호출되는 지 확인할 것
         return contestBoardRepository.save(entity).getId();
     }
-
 
     @Override
     public void delete(Integer id) {

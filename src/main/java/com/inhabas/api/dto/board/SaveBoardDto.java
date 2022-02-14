@@ -7,23 +7,22 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SaveBoardDto {
+public class SaveBoardDto extends ParentBoardDto {
     @NotBlank(message = "제목을 입력하세요.")
     @Length(max = 100, message = "제목은 최대 100자입니다.")
-    private String title;
+    protected String title;
 
     @NotBlank(message = "본문을 입력하세요.")
-    private String contents;
+    protected String contents;
 
     @NotNull
-    private Integer menuId;
+    protected Integer menuId;
 
-    @NotNull
-    private Integer loginedUser;
+    @NotNull(message = "로그인 후 이용해주세요.")
+    protected Integer loginedUser;
 
     public SaveBoardDto(String title, String contents, Integer menuId, Integer loginedUser) {
         this.title = title;

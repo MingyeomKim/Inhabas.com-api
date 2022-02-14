@@ -11,7 +11,6 @@ import com.inhabas.api.dto.board.BoardDto;
 import com.inhabas.api.dto.board.SaveBoardDto;
 import com.inhabas.api.dto.board.UpdateBoardDto;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,9 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 @Service
-@Slf4j
 @Transactional
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService {
+public class NormalBoardServiceImpl implements BoardService<SaveBoardDto, UpdateBoardDto, BoardDto, BoardDto> {
 
     private final NormalBoardRepository boardRepository;
     private final MenuRepository menuRepository;

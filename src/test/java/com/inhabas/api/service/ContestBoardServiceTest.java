@@ -8,7 +8,7 @@ import com.inhabas.api.dto.contest.DetailContestBoardDto;
 import com.inhabas.api.dto.contest.ListContestBoardDto;
 import com.inhabas.api.dto.contest.SaveContestBoardDto;
 import com.inhabas.api.dto.contest.UpdateContestBoardDto;
-import com.inhabas.api.service.contest.ContestBoardServiceImpl;
+import com.inhabas.api.service.board.ContestBoardServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -57,7 +57,7 @@ public class ContestBoardServiceTest {
     @Test
     public void createContestBoard() {
         //given
-        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto("title", "contents", "association", "topic", LocalDate.of(2022, 01, 01), LocalDate.of(2022, 01,26) , 12201863);
+        SaveContestBoardDto saveContestBoardDto = new SaveContestBoardDto("title", "contents", 9, 12201863, "association", "topic", LocalDate.of(2022, 01, 01), LocalDate.of(2022, 01,26));
         ContestBoard contestBoard = new ContestBoard(1, "title", "contents", "association", "topic", LocalDate.of(2022, 01, 01), LocalDate.of(2022, 01,26) );
         Member writer = new Member(1, "mingyeom", "010-0000-0000","picture", null, null);
 
